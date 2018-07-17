@@ -108,4 +108,30 @@ namespace DijkstrasAlgorithm_SingleSourceShortestPaths
  https://www.geeksforgeeks.org/greedy-algorithms-set-6-dijkstras-shortest-path-algorithm/
 
     (3.1 / 138)
-     */
+
+    OBJECTIVE:-
+
+    Dijkstra’s algorithm to find the shortest path 
+    from a single source vertex to all other vertices in the given graph.
+
+    1. generate a SPT (shortest path tree) with given source as root.
+
+    2. maintain two sets, 
+        A --> one set contains vertices included in shortest path tree, 
+        B --> other set includes vertices not yet included in shortest path tree.  
+    
+    3. At every step of the algorithm, 
+        we find a vertex which is in the other set (set of not yet included) and 
+        has a minimum distance from the source.
+
+
+
+    ** Put all vertices in Set B.
+    ** Assign root vertex as Zero, and all others as Infinite.
+    ** Keep iteratin over Set B, until Set A has all vertices. 
+        **  For current vertex, update Distances for all adjacent vertices.
+        **  For each adjacent vertex V, update the distance.
+        **   By default distance is V. But if [D(u) + D(u,v)] < [D(v)], 
+               distance updates to [D(u) + D(u,v)].
+        **  
+*/
