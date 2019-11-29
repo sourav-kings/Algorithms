@@ -1,9 +1,30 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace BinaryTree_VerticalOrder
 {
     class Program
     {
+
+        /*
+                           1
+                        /    \
+                       2      3
+                      / \    / \
+                     4   5  6   7
+                             \   \
+                              8   9 
+               
+			  
+                The output of print this tree vertically will be:
+                4
+                2
+                1 5 6
+                3 8
+                7
+                9 
+         */
         static Node root;
         static Values val = new Values();
         static void Main(string[] args)
@@ -20,7 +41,8 @@ namespace BinaryTree_VerticalOrder
             root.right.right.right = new Node(9);
 
             Console.WriteLine("vertical order traversal is :");
-            VerticalOrder(root);
+            //VerticalOrder(root);
+            VerticalOrder_Faster(root);
         }
 
 
@@ -79,8 +101,57 @@ namespace BinaryTree_VerticalOrder
         }
 
 
+        // The main function to print vertical oder of a binary tree
+        // with given root
+        static void VerticalOrder_Faster(Node root)
+        {
+            // Create a map and store vertical oder in map using
+            // function getVerticalOrder()
+            Dictionary<int, List<int>> m = new Dictionary<int, List<int>>();
+            int hd = 0;
+            GetVerticalOrder(root, hd, m);
 
+            // Traverse the map and print nodes at every horigontal
+            // distance (hd)
+            IEnumerator dasd = m.Values.GetEnumerator();
+            while (dasd.MoveNext())
+            {
+                List<int> list = (List<int>)dasd.Current;
+                list.ForEach(x => Console.Write(x.ToString() + " "));
+                Console.WriteLine();
+            }
+        }
 
+        // Utility function to store vertical order in map 'm'
+        // 'hd' is horizontal distance of current node from root.
+        // 'hd' is initially passed as 0
+        static void GetVerticalOrder(Node root, int hd,
+                                    Dictionary<int, List<int>> m)
+        {
+            // Base case
+            if (root == null)
+                return;
+
+            //get the vector list at 'hd'
+            List<int> get = (!m.ContainsKey(hd)) ? null : m[hd]; 
+
+            // Store current node in map 'm'
+            if (get == null)
+            {
+                get = new List<int>();
+                get.Add(root.data);
+            }
+            else
+                get.Add(root.data);
+
+            m[hd] = get;
+
+            // Store nodes in left subtree
+            GetVerticalOrder(root.left, hd - 1, m);
+
+            // Store nodes in right subtree
+            GetVerticalOrder(root.right, hd + 1, m);
+        }
     }
 
     // A binary tree node
@@ -102,3 +173,17 @@ namespace BinaryTree_VerticalOrder
     }
 
 }
+
+/*
+ * Set 1 - time complexity can become O(n*n).
+ * https://www.geeksforgeeks.org/print-binary-tree-vertical-order/
+ * (3 / 150)
+ * Time complexity of above algorithm is O(w*n) 
+ * In worst case, consider a complete tree, time complexity can become O(n*n).
+ * 
+ * 
+ * Set 2 - time complexity can become O(nLogn).
+ * (Hashmap based Method)
+ * https://www.geeksforgeeks.org/print-binary-tree-vertical-order-set-2/
+ * (3 / 200)
+ */

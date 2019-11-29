@@ -100,4 +100,11 @@ namespace Smallest_PositiveNumber_Missing_From_UnsortedArray
  * https://www.geeksforgeeks.org/find-the-smallest-positive-number-missing-from-an-unsorted-array/
  * 
  * 3.5/150
+ * 
+ * A O(n) time and O(1) extra space solution:
+ * The idea is similar to this post. We use array elements as index. 
+ * To mark presence of an element x, we change the value at the index x to negative. 
+ * But this approach doesn’t work if there are non-positive (-ve and 0) numbers. 
+ * So we segregate positive from negative numbers as first step and then apply the approach.
+ * 
  */
