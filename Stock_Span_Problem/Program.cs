@@ -12,7 +12,7 @@ namespace Stock_Span_Problem
             int[] S = new int[n];
 
             // Fill the span values in array S[]
-            CalculateSpan(price, n, S);
+            //CalculateSpan(price, n, S);
             CalculateSpan_Faster(price, n, S);
 
 

@@ -58,4 +58,17 @@ namespace Missing_Number
  * You are given a list of n-1 integers and these integers are in the range of 1 to n. 
  * There are no duplicates in list. One of the integers is missing in the list. 
  * Find the missing integer.
+ * 
+ * 
+ * 
+ * 
+ * XOR
+
+ * The XOR operator outputs a 1 whenever the inputs do not match * 
+ * 
+ * 
+ * 
+ * to find 2 or more duplicates --> 
+ * BIT SET method
+ * https://javarevisited.blogspot.com/2014/11/how-to-find-missing-number-on-integer-array-java.html?source=post_page---------------------------
  */

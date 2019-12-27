@@ -8,7 +8,8 @@ namespace Next_Greater_Element
     {
         static void Main(string[] args)
         {
-            int[] arr = { 11, 13, 21, 3 };
+            //int[] arr = { 11, 13, 21, 3 };
+            int[] arr = { 13, 7, 6, 12 };
             int n = arr.Length;
 
             //printNGE(arr, n);

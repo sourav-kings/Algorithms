@@ -101,5 +101,10 @@ namespace Two_Repeating_Elements_Array
  *          sum of integers from 1 to n is n(n+1)/2 and product is n!. 
  *          Those values when calculated upon Sum and Product of array resp., 
  *              we get both nos.
+ *              
+ *              
+ *              
+ *              https://www.geeksforgeeks.org/find-duplicates-in-on-time-and-constant-extra-space/
+ *              method(5) - not clear but handles duplicates more than 2
  *          
  */

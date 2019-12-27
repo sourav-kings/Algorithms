@@ -5,7 +5,7 @@ namespace Check_If_Two_BinaryTrees_Identical
     class Program
     {
         /* Driver program to test identicalTrees() function */
-        public static void main(String[] args)
+        public static void Main(String[] args)
         {
             BinaryTree tree = new BinaryTree();
 

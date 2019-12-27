@@ -505,11 +505,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Check_If_String_Is_Subseque
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmallestWindow_ThatContains_AllDistinctCharacters_Of_String_Itself", "SmallestWindow_ThatContains_AllCharacters_Of_String_Itself\SmallestWindow_ThatContains_AllDistinctCharacters_Of_String_Itself.csproj", "{330BE0B0-AA3B-4C3A-8386-6C2E31628D9A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fibonacci_Numbers", "Fibonacci_Numbers\Fibonacci_Numbers.csproj", "{732903A0-41C7-45AC-90DF-F7716FCB753C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fibonacci_Numbers", "Fibonacci_Numbers\Fibonacci_Numbers.csproj", "{732903A0-41C7-45AC-90DF-F7716FCB753C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Min_Num_Of_Coins_ThatMake_GivenValue", "Min_Num_Of_Coins_ThatMake_GivenValue\Min_Num_Of_Coins_ThatMake_GivenValue.csproj", "{68D088ED-81BD-4BCC-8014-693801D0DE2F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Min_Num_Of_Coins_ThatMake_GivenValue", "Min_Num_Of_Coins_ThatMake_GivenValue\Min_Num_Of_Coins_ThatMake_GivenValue.csproj", "{68D088ED-81BD-4BCC-8014-693801D0DE2F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NonCrossing_Lines_To_ConnectPoints_In_Circle", "NonCrossing_Lines_To_ConnectPoints_In_Circle\NonCrossing_Lines_To_ConnectPoints_In_Circle.csproj", "{B2D1FA8F-4F68-4E4B-919F-D890E5261E6D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NonCrossing_Lines_To_ConnectPoints_In_Circle", "NonCrossing_Lines_To_ConnectPoints_In_Circle\NonCrossing_Lines_To_ConnectPoints_In_Circle.csproj", "{B2D1FA8F-4F68-4E4B-919F-D890E5261E6D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nth_Node_From_End_Of_LinkedList", "Nth_Node_From_End_Of_LinkedList\Nth_Node_From_End_Of_LinkedList.csproj", "{151E9912-8258-471C-A77B-0D2104FF223F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "First_NonRepeating_Character", "First_NonRepeating_Character\First_NonRepeating_Character.csproj", "{09EAA4D9-DC79-4BAB-B837-F0231461A83B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuickSort", "QuickSort\QuickSort.csproj", "{F91BA31E-7A59-4B10-9E90-C069B998E0E2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -1457,6 +1463,18 @@ Global
 		{B2D1FA8F-4F68-4E4B-919F-D890E5261E6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B2D1FA8F-4F68-4E4B-919F-D890E5261E6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B2D1FA8F-4F68-4E4B-919F-D890E5261E6D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{151E9912-8258-471C-A77B-0D2104FF223F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{151E9912-8258-471C-A77B-0D2104FF223F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{151E9912-8258-471C-A77B-0D2104FF223F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{151E9912-8258-471C-A77B-0D2104FF223F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{09EAA4D9-DC79-4BAB-B837-F0231461A83B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09EAA4D9-DC79-4BAB-B837-F0231461A83B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09EAA4D9-DC79-4BAB-B837-F0231461A83B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09EAA4D9-DC79-4BAB-B837-F0231461A83B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F91BA31E-7A59-4B10-9E90-C069B998E0E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F91BA31E-7A59-4B10-9E90-C069B998E0E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F91BA31E-7A59-4B10-9E90-C069B998E0E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F91BA31E-7A59-4B10-9E90-C069B998E0E2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -1699,6 +1717,9 @@ Global
 		{732903A0-41C7-45AC-90DF-F7716FCB753C} = {16952AE6-9793-4592-8122-65195C7F1A6A}
 		{68D088ED-81BD-4BCC-8014-693801D0DE2F} = {16952AE6-9793-4592-8122-65195C7F1A6A}
 		{B2D1FA8F-4F68-4E4B-919F-D890E5261E6D} = {16952AE6-9793-4592-8122-65195C7F1A6A}
+		{151E9912-8258-471C-A77B-0D2104FF223F} = {60BEAD16-8312-4D70-A5EC-EC3573F532FD}
+		{09EAA4D9-DC79-4BAB-B837-F0231461A83B} = {596950F1-CF4C-4D0B-B4C7-D9C29CBE19C9}
+		{F91BA31E-7A59-4B10-9E90-C069B998E0E2} = {57A34EC9-5DFE-4715-87D9-237CF8C82E9F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B1F3BDDF-D737-4AE1-A3B2-F8E16894EA36}

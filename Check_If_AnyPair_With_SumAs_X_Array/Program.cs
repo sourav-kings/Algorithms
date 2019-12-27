@@ -100,6 +100,14 @@ namespace Check_If_AnyPair_With_SumAs_X_Array
         }
 
 
+        /*
+         * How is this solution better than previous one? It would require less comparisons. 
+         * Only N to iterate through array and insert values in a Set 
+         * because add() and contains() both O(1) operation in hash table. 
+         * So total complexity of solution would be O(N).
+         * 
+         * Read more: https://javarevisited.blogspot.com/2014/08/how-to-find-all-pairs-in-array-of-integers-whose-sum-equal-given-number-java.html#ixzz67XeqkSKJ
+         */
         static void Printpairs(int[] arr, int sum)
         {
             HashSet<int> s = new HashSet<int>();
@@ -135,4 +143,10 @@ namespace Check_If_AnyPair_With_SumAs_X_Array
  * METHOD 2 (Use Hashing)
  * This method works in O(n) time.
  * Auxiliary Space: O(n) where n is size of array.
+ * 
+ * 
+ * Method 3 
+ * without any additional space,
+ * time complexity (N. logN)
+ * https://javarevisited.blogspot.com/2014/08/how-to-find-all-pairs-in-array-of-integers-whose-sum-equal-given-number-java.html?source=post_page---------------------------
  */
