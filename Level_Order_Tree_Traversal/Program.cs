@@ -112,8 +112,8 @@ namespace Level_Order_Tree_Traversal
 
 //http://www.geeksforgeeks.org/level-order-tree-traversal/
 
-//Average Difficulty : 2.3/5.0
-//Based on 178 vote(s)
+//Average Difficulty : 2.5/5.0
+//Based on 450+ vote(s)
 
 
     /*

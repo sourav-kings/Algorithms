@@ -23,9 +23,9 @@ namespace UnionFind_DetectCycleUndirectedGraph
             graph.edge[1].src = 1;
             graph.edge[1].dest = 2;
 
-            //// add edge 0-2
-            //graph.edge[2].src = 0;
-            //graph.edge[2].dest = 2;
+            // add edge 0-2
+            graph.edge[2].src = 0;
+            graph.edge[2].dest = 2;
 
 
 
