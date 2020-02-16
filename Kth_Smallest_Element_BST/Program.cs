@@ -29,7 +29,7 @@ namespace Kth_Smallest_Element_BST
 
             for (int k = 1; k <= 5; k++)
             {
-                Console.WriteLine(k + " smallest Element is :- " +  KSmallestUsingMorris(root, k) + " ");
+                Console.WriteLine(k + " smallest Element is :- " + KSmallestUsingMorris(root, k) + " ");
                 //Console.Write(kthSmallestUsingStack(root, k) + " ");                
             }
 
@@ -126,31 +126,6 @@ namespace Kth_Smallest_Element_BST
             return ksmall; //return the found value
         }
 
-        static int kthSmallestUsingStack(Node root, int k)
-        {
-            Stack<Node> stack = new Stack<Node>();            
-            int result = 0;
-
-            while (stack.Count != 0 || root != null)
-            {
-                if (root != null)
-                {
-                    stack.Push(root);
-                    root = root.left;
-                }
-                else
-                {
-                    Node t = stack.Pop();
-                    k--;
-                    if (k == 0)
-                        result = t.key;
-                    root = t.right;
-                }
-            }
-
-            return result;
-        }
-
         static int kthSmallestUsingStack2(Node root, int k)
         {
             Stack<Node> stack = new Stack<Node>();
@@ -175,7 +150,7 @@ namespace Kth_Smallest_Element_BST
                         result = t.key;
                     root = t.right;
                 }
-            
+
             }
 
             return result;
@@ -193,38 +168,54 @@ namespace Kth_Smallest_Element_BST
             left = right = null;
         }
     }
+
 }
 
 
-
-
 /*
- * http://www.geeksforgeeks.org/find-k-th-smallest-element-in-bst-order-statistics-in-bst/
+    Method 1: 
+    https://www.geeksforgeeks.org/find-k-th-smallest-element-in-bst-order-statistics-in-bst/
  
-    Average Difficulty : 3.4/5.0
-Based on 95 vote(s)
+    Time complexity: O(n) where n is total nodes in tree..
+    Using Inorder Traversal.
 
-     */
-
-    /*
-     * Stack Method (No Recursion)
-     * ----------------------------
-     * 
-     */
-      *
+    Inorder traversal of BST retrieves elements of tree in the sorted order. 
+    The inorder traversal uses stack to store to be explored nodes of tree 
+    (threaded tree avoids stack and recursion for traversal, see this post). 
+    The idea is to keep track of popped elements which participate in the order statics. 
+    Hypothetical algorithm is provided below,
 
 
 
+    Method 2:
+    https://www.geeksforgeeks.org/find-k-th-smallest-element-in-bst-order-statistics-in-bst/
+
+    (3.5/200)
+    The method 2 takes O(h) time where h is height of BST, 
+    but requires augmenting the BST (storing count of nodes in left subtree with every node).
 
 
 
+    Method 3:
+    https://www.geeksforgeeks.org/kth-largest-element-in-bst-when-modification-to-bst-is-not-allowed/
 
-/*
- * Method 1: Using Inorder Traversal.
+    (2.5 / 100)
+    It takes O(h + k) time. This method doesn’t require any change to BST.
+    The idea is to do reverse inorder traversal of BST. 
 
-Inorder traversal of BST retrieves elements of tree in the sorted order. 
-The inorder traversal uses stack to store to be explored nodes of tree (threaded tree avoids stack and recursion for traversal, see this post). 
-The idea is to keep track of popped elements which participate in the order statics. Hypothetical algorithm is provided below,
+    The reverse inorder traversal traverses all nodes in decreasing order. 
+    While doing the traversal, we keep track of count of nodes visited so far. 
+    When the count becomes equal to k, we stop the traversal and print the key.
 
-Time complexity: O(n) where n is total nodes in tree..
+
+
+    Method 4:
+    https://www.geeksforgeeks.org/kth-smallest-element-in-bst-using-o1-extra-space/
+    
+    (4 / 100)    
+    All of the previous methods require extra space. How to find the k’th largest element without extra space?
+    The idea is to use Morris Traversal. 
+
+    In this traversal, we first create links to Inorder successor and print the data using these links, 
+    and finally revert the changes to restore original tree. See this for more details.
  */

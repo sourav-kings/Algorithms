@@ -56,3 +56,10 @@ namespace Delete_BinaryTree
 
     }
 }
+
+
+/*
+ * https://www.geeksforgeeks.org/write-a-c-program-to-delete-a-tree/
+ * 
+ * 2 (200+)
+ */

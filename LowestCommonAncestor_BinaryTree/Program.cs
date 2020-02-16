@@ -114,3 +114,17 @@ namespace LowestCommonAncestor_BinaryTree
         }
     }
 }
+
+
+/*
+ * https://www.geeksforgeeks.org/lowest-common-ancestor-binary-tree-set-1/
+ * 
+ * 3.5 (300+)
+ * 
+ * Method 1 (By Storing root to n1 and root to n2 paths):
+ * 
+ * Method 2 (Using Single Traversal)
+ *  The method 1 finds LCA in O(n) time, but requires three tree traversals plus extra spaces for path arrays.
+ *  If we assume that the keys n1 and n2 are present in Binary Tree, we can find LCA 
+ *  using single traversal of Binary Tree and without extra storage for path arrays.
+ */

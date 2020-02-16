@@ -27,21 +27,21 @@ namespace Correct_BST_By_Swapping_TwoNodes
          2   8
              */
 
-            TreeNode root = new TreeNode(10);
-            root.Right = new TreeNode(8);
-            root.Left = new TreeNode(5);
-            root.Left.Left = new TreeNode(2);
-            root.Left.Right = new TreeNode(20);
+            //TreeNode root = new TreeNode(10);
+            //root.Right = new TreeNode(8);
+            //root.Left = new TreeNode(5);
+            //root.Left.Left = new TreeNode(2);
+            //root.Left.Right = new TreeNode(20);
 
 
 
-            //TreeNode root = new TreeNode(6);
-            //root.Left = new TreeNode(10);
-            //root.Right = new TreeNode(2);
-            //root.Left.Left = new TreeNode(1);
-            //root.Left.Right = new TreeNode(3);
-            //root.Right.Right = new TreeNode(12);
-            //root.Right.Left = new TreeNode(7);
+            TreeNode root = new TreeNode(6);
+            root.Left = new TreeNode(10);
+            root.Right = new TreeNode(2);
+            root.Left.Left = new TreeNode(1);
+            root.Left.Right = new TreeNode(3);
+            root.Right.Right = new TreeNode(12);
+            root.Right.Left = new TreeNode(7);
 
 
             //TreeNode root = new TreeNode(8);
@@ -52,14 +52,14 @@ namespace Correct_BST_By_Swapping_TwoNodes
 
 
 
-            Console.WriteLine("InCorrect Bst Inorder traversal :");
-            InOrder(root);
-            //correctBST2(root);
-            //CorrectBst(root);
-            recoverTree(root);
-            Console.WriteLine();
-            Console.WriteLine("Corrected Bst Inorder traversal");
-            InOrder(root);
+            //Console.WriteLine("InCorrect Bst Inorder traversal :");
+            //InOrder(root);
+            ////correctBST2(root);
+            ////CorrectBst(root);
+            //recoverTree(root);
+            //Console.WriteLine();
+            //Console.WriteLine("Corrected Bst Inorder traversal");
+            //InOrder(root);
 
 
             Console.WriteLine("\n");
@@ -74,12 +74,12 @@ namespace Correct_BST_By_Swapping_TwoNodes
             //root.Right.Right = new TreeNode { Data = 12 };
             //root.Right.Left = new TreeNode { Data = 7 };
 
-            //Console.WriteLine("InCorrect Bst Inorder traversal :");
-            //InOrder(root);
-            //correctBST2(root);
-            //Console.WriteLine();
-            //Console.WriteLine("Corrected Bst Inorder traversal");
-            //InOrder(root);
+            Console.WriteLine("InCorrect Bst Inorder traversal :");
+            InOrder(root);
+            correctBST2(root);
+            Console.WriteLine();
+            Console.WriteLine("Corrected Bst Inorder traversal");
+            InOrder(root);
 
         }
 
@@ -160,7 +160,7 @@ namespace Correct_BST_By_Swapping_TwoNodes
 
 
 
-
+        static TreeNode first, middle, last, prev;
 
         // A function to fix a given BST where two nodes are swapped.  This
         // function uses correctBSTUtil() to find out two nodes and swaps the
@@ -172,7 +172,7 @@ namespace Correct_BST_By_Swapping_TwoNodes
             first = middle = last = prev = null;
 
             // Set the poiters to find out two nodes
-            correctBSTUtil2(root, first, middle, last, prev);
+            correctBSTUtil2(root);
 
             // Fix (or correct) the tree
             if (first != null && last != null)
@@ -196,13 +196,12 @@ namespace Correct_BST_By_Swapping_TwoNodes
         // It sets three pointers, first, middle and last.  If the swapped nodes are
         // adjacent to each other, then first and middle contain the resultant nodes
         // Else, first and last contain the resultant nodes
-        static void correctBSTUtil2(TreeNode root, TreeNode first, TreeNode middle, TreeNode last,
-                     TreeNode prev)
+        static void correctBSTUtil2(TreeNode root)
         {
             if (root != null)
             {
                 // Recur for the Left subtree
-                correctBSTUtil2(root.Left, first, middle, last, prev);
+                correctBSTUtil2(root.Left);
 
                 // If this node is smaller than the previous node, it's violating
                 // the BST rule.
@@ -225,7 +224,7 @@ namespace Correct_BST_By_Swapping_TwoNodes
                 prev = root;
 
                 // Recur for the Right subtree
-                correctBSTUtil2(root.Right, first, middle, last, prev);
+                correctBSTUtil2(root.Right);
             }
         }
 

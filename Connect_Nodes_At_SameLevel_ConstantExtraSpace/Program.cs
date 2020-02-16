@@ -175,3 +175,15 @@ namespace Connect_Nodes_At_SameLevel_ConstantExtraSpace
         }
     }
 }
+
+
+/*
+ * 4.5 (300)
+ * We discussed two different approaches to do it in the previous post. 
+ * https://www.geeksforgeeks.org/connect-nodes-at-same-level/
+ * The auxiliary space required in both of those approaches is not constant. 
+ * Also, the method 2 discussed there only works for complete Binary Tree.
+
+In this post, we will first modify the method 2 to make it work for all kind of trees. 
+After that, we will remove recursion from this method so that the extra space becomes constant.
+ */

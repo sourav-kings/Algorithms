@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace ConstructTree_From_InorderAndLevelOrder_Traversals
 {
@@ -66,6 +67,62 @@ namespace ConstructTree_From_InorderAndLevelOrder_Traversals
             return startNode;
         }
 
+
+        // Function to build tree from given  
+        // levelorder and inorder 
+        Node BuildTreeFaster(int[] inorder, int[] levelOrder, int iStart, int iEnd, int n)
+        {
+            if (n <= 0)
+                return null;
+
+            // First node of level order is root 
+            Node root = new Node(levelOrder[0]);
+
+            // Search root in inorder 
+            int index = -1;
+            for (int i = iStart; i <= iEnd; i++)
+            {
+                if (levelOrder[0] == inorder[i])
+                {
+                    index = i;
+                    break;
+                }
+            }
+
+            // Insert all left nodes in hash table 
+            HashSet<int> s = new HashSet<int>();
+            for (int i = iStart; i < index; i++)
+                s.Add(inorder[i]);
+
+            // Separate level order traversals 
+            // of left and right subtrees. 
+            int[] lLevel = new int[s.Count];  // Left  
+            int[] rLevel = new int[iEnd - iStart - s.Count];  // Right
+            int li = 0, ri = 0;
+
+            
+
+            for (int i = 1; i < n; i++)
+            {
+                //if (s.find(levelOrder[i]) != s.end())
+                if (s.Contains(levelOrder[i]))
+                    lLevel[li++] = levelOrder[i];
+                else
+                    rLevel[ri++] = levelOrder[i];
+            }
+
+            // Recursively build left and right 
+            // subtrees and return root. 
+            root.left = BuildTreeFaster(inorder, lLevel,
+                         iStart, index - 1, index - iStart);
+            root.right = BuildTreeFaster(inorder, rLevel,
+                          index + 1, iEnd, iEnd - index);
+            return root;
+
+        }
+        
+
+
         /* Utility function to print inorder traversal of binary tree */
         static void PrintInorder(Node node)
         {
@@ -98,10 +155,20 @@ namespace ConstructTree_From_InorderAndLevelOrder_Traversals
         {
             this.right = right;
         }
+
+        public Node MakeNode(Node newNode, int data)
+        {
+            newNode.data = data;
+            newNode.left = newNode.right = null;
+            return newNode;
+        }
     }
 }
 
 /*
+ * On(n3) method: https://www.geeksforgeeks.org/construct-tree-inorder-level-order-traversals/
+ * 
+ * 
  * Can be further optimized to O(n^2) using hash maps. 
 The recursion is simpler too.
 

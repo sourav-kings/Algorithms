@@ -10,80 +10,78 @@ namespace Merge_K_SortedArrays
         {
             // Change n at the top to change number of elements
             // in an array
-            int [,] arr =  {{2, 6, 12, 34},
+            int[,] arr =  {{2, 6, 12, 34},
                      {1, 9, 20, 1000},
                      {23, 34, 90, 2000}};
 
-            int n = 3;
-            int k = arr.Length;
+            //int n = 3;
+            //int k = arr.Length;
+            int k = arr.GetLength(0);
 
-            int output = MergeKArrays(arr, n, k);
+            //int output = MergeKArrays(arr, n, k);
 
             Console.WriteLine("Merged array is ");
-            PrintArray(arr, n)    ;
+            MergeKSortedArrays(arr, k);
+
+            //PrintArray(arr, n)    ;
 
             //Heap<int> highers = new Heap<int>("min");
         }
 
         // A utility function to print array elements
-        static void PrintArray(int[] arr, int size)
+        static void PrintArray(int[] arr)
         {
-            for (int i = 0; i < size; i++)
-                Console.WriteLine(arr[i] + " ");
+            foreach (int i in arr)
+                Console.Write(i + " ");
+            Console.WriteLine();
         }
 
         // This function takes an array of arrays as an argument and
         // All arrays are assumed to be sorted. It merges them together
         // and prints the final sorted output.
-        static int MergeKArrays(int[,] arr, int n, int k)
+        static void MergeKSortedArrays(int[,] arr, int k)
         {
-            int len = n * k;
-            int[] output = new int[len];  // To store output array
-
-            // Create a min heap with k heap nodes.  Every heap node
-            // has first element of an array
-            MinHeapNode[] harr = new MinHeapNode[k];
-            //MinHeapNode* harr = new MinHeapNode[k];
-
-            Heap<MinHeapNode> hp = new Heap<MinHeapNode>("min");
-            for (int i = 0; i < k; i++)
+            MinHeapNode[] hArr = new MinHeapNode[k];
+            int resultSize = 0;
+            for (int i = 0; i < arr.GetLength(0); i++)
             {
-                harr[i].element = arr[i,0]; // Store the first element
-                harr[i].i = i;  // index of array
-                harr[i].j = 1;  // Index of next element to be stored from array
-
-                hp.Insert(harr[i]);
+                MinHeapNode node = new MinHeapNode(arr[i, 0], i, 1);
+                hArr[i] = node;
+                resultSize += arr.GetLength(1);
             }
 
+            // Create a min heap with k heap nodes.  
+            // Every heap node has first element of an array 
+            MinHeap mh = new MinHeap(hArr, k);
 
+            int[] result = new int[resultSize];     // To store output array 
 
-            //MinHeap hp(harr, k); // Create the heap
-
-
-            // Now one by one get the minimum element from min
-            // heap and replace it with next element of its array
-            for (int count = 0; count < n * k; count++)
+            // Now one by one get the minimum element  
+            // from min heap and replace it with  
+            // next element of its array 
+            for (int i = 0; i < resultSize; i++)
             {
-                // Get the minimum element and store it in output
-                MinHeapNode root = hp.
-                output[count] = root.element;
 
-                // Find the next elelement that will replace current
-                // root of heap. The next element belongs to same
-                // array as the current root.
-                if (root.j < n)
-                {
-                    root.element = arr[root.i][root.j];
-                    root.j += 1;
-                }
-                // If root was the last element of its array
-                else root.element = INT_MAX; //INT_MAX is for infinite
+                // Get the minimum element and 
+                // store it in result 
+                MinHeapNode root = mh.GetMin();
+                result[i] = root.element;
 
-                // Replace root with next element of array
-                hp.replaceMin(root);
+                // Find the next element that will  
+                // replace current root of heap.  
+                // The next element belongs to same 
+                // array as the current root. 
+                if (root.j < arr.GetLength(1))
+                    root.element = arr[root.i, root.j++];
+
+                // If root was the last element of its array 
+                else
+                    root.element = int.MaxValue;
+
+                // Replace root with next element of array  
+                mh.ReplaceMin(root);
             }
-
-            return output;
+            PrintArray(result);
         }
     }
 
@@ -251,7 +249,7 @@ namespace Merge_K_SortedArrays
         public int j; // index of the next element to be picked from array
 
 
-        MinHeapNode(int element, int i, int j)
+        public MinHeapNode(int element, int i, int j)
         {
             this.element = element;
             this.i = i;
@@ -263,7 +261,93 @@ namespace Merge_K_SortedArrays
             return other.element - this.element;
         }
     }
+
+    // A class for Min Heap 
+    class MinHeap
+    {
+        MinHeapNode[] harr; // Array of elements in heap 
+        int heap_size; // Current number of elements in min heap 
+
+        // Constructor: Builds a heap from  
+        // a given array a[] of given size 
+        public MinHeap(MinHeapNode[] a, int size)
+        {
+            heap_size = size;
+            harr = a;
+            int i = (heap_size - 1) / 2;
+            while (i >= 0)
+            {
+                MinHeapify(i);
+                i--;
+            }
+        }
+
+        // A recursive method to heapify a subtree  
+        // with the root at given index This method 
+        // assumes that the subtrees are already heapified 
+        void MinHeapify(int i)
+        {
+            int l = Left(i);
+            int r = Right(i);
+            int smallest = i;
+            if (l < heap_size &&
+                harr[l].element < harr[i].element)
+                smallest = l;
+            if (r < heap_size &&
+                harr[r].element < harr[smallest].element)
+                smallest = r;
+            if (smallest != i)
+            {
+                Swap(harr, i, smallest);
+                MinHeapify(smallest);
+            }
+        }
+
+        // to get index of left child of node at index i 
+        int Left(int i) { return (2 * i + 1); }
+
+        // to get index of right child of node at index i 
+        int Right(int i) { return (2 * i + 2); }
+
+        // to get the root 
+        internal MinHeapNode GetMin()
+        {
+            if (heap_size <= 0)
+            {
+                Console.WriteLine("Heap underflow");
+                return null;
+            }
+            return harr[0];
+        }
+
+        // to replace root with new node  
+        // "root" and heapify() new root 
+        internal void ReplaceMin(MinHeapNode root)
+        {
+            harr[0] = root;
+            MinHeapify(0);
+        }
+
+        // A utility function to swap two min heap nodes 
+        void Swap(MinHeapNode[] arr, int i, int j)
+        {
+            MinHeapNode temp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = temp;
+        }
+    }
+
 }
 
 
 //Complexity would be O(NKlogK)
+//https://www.geeksforgeeks.org/merge-k-sorted-arrays/
+
+/*
+ * additional resources:
+ * https://www.hackerearth.com/practice/notes/heaps-and-priority-queues/
+ * https://leetcode.com/problems/merge-k-sorted-lists/discuss/?currentPage=1&orderBy=most_votes&query=
+ * https://www.programcreek.com/2014/05/merge-k-sorted-arrays-in-java/
+ * https://medium.com/outco/how-to-merge-k-sorted-arrays-c35d87aa298e
+ * https://algorithmsandme.com/merge-k-sorted-arrays/
+ */

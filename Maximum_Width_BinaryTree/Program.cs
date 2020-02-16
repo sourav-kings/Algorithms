@@ -164,13 +164,14 @@ namespace Maximum_Width_BinaryTree
     //http://www.geeksforgeeks.org/maximum-width-of-a-binary-tree/
 
     //Average Difficulty : 2.5/5.0
-    //Based on 106 vote(s)
+    //Based on 200 vote(s)
 
 */
 
 /*
 
-    Given a binary tree, write a function to get the maximum width of the given tree. Width of a tree is maximum of widths of all levels.
+    Given a binary tree, write a function to get the maximum width of the given tree. 
+    Width of a tree is maximum of widths of all levels.
 
     Let us consider the below example tree.
 
