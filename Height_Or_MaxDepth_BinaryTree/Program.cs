@@ -62,14 +62,14 @@ namespace Height_Or_MaxDepth_BinaryTree
             {
                 // nodeCount (queue size) indicates number of nodes
                 // at current lelvel.
-                int nodeCount = q.Count;
-                if (nodeCount == 0)
+                int currentLevel_nodeCount = q.Count;
+                if (currentLevel_nodeCount == 0)
                     return height;
                 height++;
 
                 // Dequeue all nodes of current level and Enqueue all
                 // nodes of next level
-                while (nodeCount > 0)
+                while (currentLevel_nodeCount > 0)
                 {
                     Node newnode = q.Peek();
                     q.Dequeue();
@@ -77,7 +77,7 @@ namespace Height_Or_MaxDepth_BinaryTree
                         q.Enqueue(newnode.left);
                     if (newnode.right != null)
                         q.Enqueue(newnode.right);
-                    nodeCount--;
+                    currentLevel_nodeCount--;
                 }
             }
         }
@@ -96,3 +96,12 @@ namespace Height_Or_MaxDepth_BinaryTree
         }
     }
 }
+
+
+/*
+ * Observation -- 17th Feb 2023
+ * 
+ * Queue 
+ * -- 1st loop to elevate levels
+ * -- 2nd loop to cover all nodes for the curent level
+ */
