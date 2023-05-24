@@ -1,0 +1,45 @@
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+class MinStack
+{
+    // Driver Code
+    public static int n;
+    public static List<String> answer = new List<String>();
+    public static StringBuilder curString = new StringBuilder();
+
+    public static void Main()
+	{
+        n = 3;
+        //Console.WriteLine(generateParenthesis(n).ToString());
+        generateParenthesis(n).ForEach(Console.WriteLine);
+    }
+
+    public static List<String> generateParenthesis(int n)
+    {        
+        backtracking(0, 0);
+        return answer;
+    }
+
+    private static void backtracking(int leftCount, int rightCount)
+    {
+        if (curString.Length == 2 * n)
+        {
+            answer.Add(curString.ToString());
+            return;
+        }
+        if (leftCount < n)
+        {
+            curString.Append("(");
+            backtracking(leftCount + 1, rightCount);
+            curString.Remove(curString.Length - 1, 1);
+        }
+        if (leftCount > rightCount)
+        {
+            curString.Append(")");
+            backtracking(leftCount, rightCount + 1); 
+            curString.Remove(curString.Length - 1, 1);
+        }
+    }
+}
